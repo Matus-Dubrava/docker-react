@@ -6,12 +6,15 @@ script:
 services:
     - docker
 sudo: required
-# deploy:
-#     provider: elasticbeanstalk
-#     region: 'us-east-1'
-#     app: 'name-of-the-application'
-#     env: 'name-of-the-environment'
-#     bucket_name: 'name-of-s3-bucket-generated-by-elasticbeanstalk'
-#     bucket_path: 'path-to-application-folder-in-the-s3-bucket'
-#     on:
-#         branch: master
+deploy:
+    provider: elasticbeanstalk
+    region: 'us-east-1'
+    app: 'docker'
+    env: 'Docker-env'
+    bucket_name: 'elasticbeanstalk-us-east-1-859119227216'
+    bucket_path: 'docker'
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key:
+        secure: '$AWS_SECRET_KEY'
